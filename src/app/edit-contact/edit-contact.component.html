@@ -1,0 +1,35 @@
+<button class="btn btn-primary mx-2 my-2" (click)="back()">Back</button>
+
+<h1 class="text-center mt-5">Edit Contact Card</h1>
+<form class="container form-container mt-5" (ngSubmit)="updateContact()" *ngIf="contact">
+  <label for="firstname">First Name</label>
+  <input type="text" placeholder="firstname" id="firstname" [(ngModel)]="contact.firstName" name="firstname" class="form-control mb-4">
+
+  <label for="lastname">Last Name</label>
+  <input type="text" placeholder="lastname" id="lastname" [(ngModel)]="contact.lastName" name="lastname" class="form-control mb-4">
+  <label for="emails" class="w-100">Emails</label>
+  <div *ngFor="let email of contact.emails; let i = index" id="emails">
+    <input type="email" placeholder="email" [(ngModel)]="contact.emails[i]" [name]="'emails' + i" class="form-control mb-2" [id]="'emails-'+i">
+    <button class="btn btn-secondary mb-2" *ngIf="i > 0" (click)="removeEmail(i, $event);">Remove</button>
+  </div>
+  <button class="btn btn-secondary" (click)="addEmail($event);">Add Email</button>
+
+  <label for="phoneNumbers" class="w-100">Phone Numbers</label>
+  <div *ngFor="let phoneNumber of contact.phoneNumbers; let i = index" id="phoneNumbers" class="w-100 mb-4">
+    <input type="text" placeholder="phone number" [(ngModel)]="phoneNumber.number" [name]="'phoneNumbers' + i" [id]="'phoneNumbers-'+i" class="form-control mb-2">
+    <select [(ngModel)]="phoneNumber.type" class="form-control mb-2" name="phoneNumberType">
+      <option value="CELL" [selected]="phoneNumber.type === 'CELL'">Mobile</option>
+      <option value="WORK" [selected]="phoneNumber.type === 'WORK'">Work</option>
+      <option value="HOME" [selected]="phoneNumber.type === 'HOME'">Home</option>
+    </select>
+    <button class="btn btn-secondary" *ngIf="i > 0" (click)="removePhoneNumber(i, $event);">Remove</button>
+  </div>
+  <button class="btn btn-secondary mb-2" (click)="addPhoneNumber($event);">Add Phone Number</button><br>
+  <label for="socialLinks" class="w-100">Social Links</label>
+  <div *ngFor="let socialLink of contact.socialMediaLinks; let i = index;" id="socialLinks" class="w-100 mb-4">
+    <input type="text" placeholder="social link" [(ngModel)]="contact.socialMediaLinks[i]" [name]="'socialLinks' + i" class="form-control mb-2" [id]="'socialLinks-'+i">
+    <button class="btn btn-secondary mb-2" *ngIf="i > 0" (click)="removeSocialLink(i, $event);">Remove</button>
+  </div>
+  <button class="btn btn-secondary mb-2" (click)="addSocialLink($event)">Add Social Link</button><br>
+  <button type="submit" class="btn btn-primary">Update Contact</button>
+</form>

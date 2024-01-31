@@ -1,0 +1,20 @@
+<nav class="d-flex p-4 bg-body-tertiary">
+  <a class="navbar-brand mx-2" routerLink="/"><h4>QrCodeGenerator</h4></a>
+
+  <ul class="d-flex justify-content-between m-0 w-100">
+    <li class="nav-item active" style="list-style: none">
+      <a class="nav-link" routerLink="/contacts">Contacts</a>
+    </li>
+    <div class="d-flex gap-2">
+      <li class="nav-item" *ngIf="!isAuthenticated()" style="list-style: none">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item" *ngIf="!isAuthenticated()" style="list-style: none">
+        <a class="nav-link" routerLink="/register">Register</a>
+      </li>
+    </div>
+    <li class="nav-item mx-4" *ngIf="isAuthenticated()" style="list-style: none">
+      <a class="nav-link" (click)="logout()" style="cursor: pointer">Logout</a>
+    </li>
+  </ul>
+</nav>

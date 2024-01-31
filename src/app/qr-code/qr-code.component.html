@@ -1,0 +1,6 @@
+<button class="btn btn-primary mx-2 my-2" (click)="back()">Back</button>
+<div class="qrcode-container d-flex justify-content-center align-items-center flex-column container mt-4">
+  <button class="btn btn-primary" (click)="generatePdf()">Export PDF</button>
+  <img [src]="contactCard.qrCode" alt="" class="qrcode">
+  <h1> {{ contactCard.firstName}}</h1>
+</div>

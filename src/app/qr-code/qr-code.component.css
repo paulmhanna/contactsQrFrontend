@@ -1,0 +1,16 @@
+.form-container {
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  padding: 2em;
+
+}
+
+.qrcode-container {
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  padding: 2em;
+}
+
+.qrcode {
+  width: 500px;
+}
